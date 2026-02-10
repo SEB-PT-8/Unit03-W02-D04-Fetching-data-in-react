@@ -18,11 +18,16 @@ function App() {
   // an array
   useEffect(()=>{getAllStudents()},[])
 
+  async function deleteStudent(id){
+    await axios.delete(`https://omar-ga-class.onrender.com/students/${id}`)
+  }
+
   return (
     <div>
       {students.length === 0 ? <h2>Loading...</h2> : (students.map((oneStudent)=>
       <div>
         <h3>{oneStudent.name}</h3>
+        <button>Delete Student</button>
       </div>
       ))}
       
