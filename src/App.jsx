@@ -5,10 +5,14 @@ function App() {
 
   async function getAllStudents(){
     const allStudents = await axios.get('https://omar-ga-class.onrender.com/students/') // always async await axios calls
-    // setStudents(allStudents.data)
+    setStudents(allStudents.data)
   }
-  getAllStudents()
   console.log('Component refreshes')
+
+  // 2 arguemnts:
+  // a function
+  // an array
+  useEffect(()=>{getAllStudents()},[])
 
   return (
     <div>App</div>
