@@ -3,9 +3,11 @@ import axios from 'axios'
 function App() {
   const [students, setStudents] = useState([])
 
-  function getAllStudents(){
-    const allStudents = 
+  async function getAllStudents(){
+    const allStudents = await axios.get('https://omar-ga-class.onrender.com/students/') // always async await axios calls
+    console.log(allStudents.data)
   }
+  getAllStudents()
 
   return (
     <div>App</div>
