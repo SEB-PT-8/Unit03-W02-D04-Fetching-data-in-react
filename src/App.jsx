@@ -6,8 +6,12 @@ function App() {
   async function getAllStudents(){
     const allStudents = await axios.get('https://omar-ga-class.onrender.com/students/') // always async await axios calls
     setStudents(allStudents.data)
+
   }
   console.log('Component refreshes')
+
+  // Exercise 2:
+  // 1. map through the students state and show all the students on the page
 
   // 2 arguemnts:
   // a function
