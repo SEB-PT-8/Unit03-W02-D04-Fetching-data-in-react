@@ -19,7 +19,14 @@ function App() {
   useEffect(()=>{getAllStudents()},[])
 
   return (
-    <div>App</div>
+    <div>
+      {students.length === 0 ? <h2>Loading...</h2> : (students.map((oneStudent)=>
+      <div>
+        <h3>{oneStudent.name}</h3>
+      </div>
+      ))}
+      
+    </div>
   )
 }
 
