@@ -4,7 +4,7 @@ function App() {
   const [students, setStudents] = useState([])
 
   async function getAllStudents(){
-    const allStudents = await axios.get('https://omar-ga-class.onrender.com/students/') // always async await axios calls
+    const allStudents = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/students/`) // always async await axios calls
     setStudents(allStudents.data)
 
   }
@@ -19,7 +19,8 @@ function App() {
   useEffect(()=>{getAllStudents()},[])
 
   async function deleteStudent(id){
-    await axios.delete(`https://omar-ga-class.onrender.com/students/${id}`)
+    await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/students/${id}`)
+    getAllStudents() // gets all the students after the deletion
   }
 
   return (
@@ -27,7 +28,7 @@ function App() {
       {students.length === 0 ? <h2>Loading...</h2> : (students.map((oneStudent)=>
       <div>
         <h3>{oneStudent.name}</h3>
-        <button>Delete Student</button>
+        <button onClick={()=>{deleteStudent(oneStudent._id)}}>Delete Student</button>
       </div>
       ))}
       
